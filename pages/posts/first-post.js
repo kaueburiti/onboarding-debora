@@ -1,7 +1,8 @@
 import Head from 'next/head';
-import Link from 'next/link';
-import Script from 'next/script';
+// import Link from 'next/link';
 import Layout from '../../components/Layout';
+
+import HouseCard from '../../components/HouseCard';
 
 export default function FirstPost() {
   return (
@@ -10,14 +11,16 @@ export default function FirstPost() {
         <Head>
           <title>First Post</title>
         </Head>
-        <h1 className='text-3xl font-bold underline text-red-600'>
-          First Post!
-        </h1>
-        <h2>
-          <Link href='/'>
-            <a>Back to home</a>
-          </Link>
-        </h2>
+        <div className='flex justify-center pt-9 pb-5 bg-zinc-50'>
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+            <HouseCard />
+            <HouseCard />
+            <HouseCard />
+            <HouseCard />
+            <HouseCard />
+            <HouseCard />
+          </div>
+        </div>
       </Layout>
     </>
   );
