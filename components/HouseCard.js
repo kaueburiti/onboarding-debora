@@ -8,17 +8,39 @@ import BedIcon from './icons/BedIcon';
 import BathIcon from './icons/BathIcon';
 import GroupIcon from './icons/GroupIcon';
 import RectangleIcon from './icons/RectangleIcon';
+import EllipseIconGreen from './icons/EllipseIconGreen';
 
-export default function HouseCard() {
+export default function HouseCard({
+  address,
+  baths,
+  beds,
+  id,
+  image,
+  name,
+  price,
+  sqft,
+  status,
+}) {
+  const getFill = () => {
+    if (status === 'For Sale') return 'green';
+    if (status === 'For Rent') return 'blue';
+    if (status === 'Sold') return 'red';
+  };
+
   return (
     <div className='bg-white border-transparent h-full pb-5 font-["Roboto"]  shadow-lg'>
       <div className='flex relative items-center'>
         <div className='flex items-center'>
-          <Image src={kitchen} alt='kitchen-img' width={350} height={200} />
+          <Image
+            src='https://via.placeholder.com/350x250'
+            alt='kitchen-img'
+            width={350}
+            height={200}
+          />
         </div>
-        <div className='z-10 flex items-center justify-center left-6 top-6 absolute border bg-white rounded-sm w-24'>
-          <EllipseIcon />
-          <p className='font-normal text-base pl-1'>For Sale</p>
+        <div className='z-10 flex items-center justify-start left-6 top-6 absolute border bg-white rounded-sm w-24 pl-1'>
+          <EllipseIcon fill={getFill()} />
+          <p className='font-normal text-base pl-1'>{status}</p>
         </div>
         <div className='z-10 flex items-center justify-center right-6 top-6 absolute border rounded-full w-9 h-9 bg-white'>
           <FavoriteIcon />
@@ -26,31 +48,31 @@ export default function HouseCard() {
       </div>
 
       <div className='pl-6 pr-6'>
-        <h4 className='text-xl pt-5 font-medium'>Duples Pent House</h4>
+        <h4 className='text-xl pt-5 font-medium'>{name}</h4>
         <div className='flex h-full pt-2 border-b border-zinc-300 mr-0 w-full mb-0'>
           <MapIcon />
           <p className='w-40 font-normal text-sm not-italic text-zinc-400 pb-4 pl-1'>
-            110 Ermin Street, wstrws
+            {address}
           </p>
         </div>
         <div className='flex justify-between font-light text-base pt-3 pb-3 border-b border-zinc-300 '>
           <div className='w-full flex justify-start items-center h-5'>
             <BedIcon />
-            <p className='pl-2'>4 Bed</p>
+            <p className='pl-2'>{beds} Beds</p>
           </div>
           <RectangleIcon />
           <div className='w-full flex justify-center items-center pr-2 pl-2 h-5'>
             <BathIcon />
-            <p className='pl-2'>3 Bath</p>
+            <p className='pl-2'>{baths} Baths</p>
           </div>
           <RectangleIcon />
           <div className='w-full flex justify-end items-center h-5'>
             <GroupIcon />
-            <p className='pl-2'>1574 sq</p>
+            <p className='pl-2'>{sqft} sq</p>
           </div>
         </div>
         <div className='flex justify-between pt-4 items-center'>
-          <h4 className='font-medium text-xl'>$2400</h4>
+          <h4 className='font-medium text-xl'>${price}</h4>
           <button
             type='button'
             className='justify-center p-1 w-28 h-10 text-white bg-blue-600 border-transparent rounded-sm font-normal text-sm'
