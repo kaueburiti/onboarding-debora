@@ -32,6 +32,7 @@ export default function FirstPost() {
                   price={card.price}
                   sqft={card.sqft}
                   status={card.status}
+                  key={id}
                 />
               );
             })}
