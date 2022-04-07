@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function EllipseIcon() {
+export default function EllipseIcon({ fill }) {
   return (
     <svg
       width='12'
@@ -9,7 +9,7 @@ export default function EllipseIcon() {
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
     >
-      <circle cx='6' cy='6' r='5.5' fill='#F21515' stroke='white' />
+      <circle cx='6' cy='6' r='5.5' stroke='white' fill={fill} />
     </svg>
   );
 }
